@@ -1,8 +1,7 @@
 {
-  "name": "hellotypescript",
+  "name": "puppeteer-insight-timer",
   "version": "1.0.0",
   "main": "dist/index.js",
-  "license": "CC0-1.0",
   "scripts": {
     "build": "tsc",
     "test": "npm run mocha --recursive ./src/**/__tests__/*",
@@ -15,5 +14,8 @@
     "mocha": "3.5.3",
     "ts-node": "3.3.0",
     "typescript": "2.5.2"
+  },
+  "dependencies": {
+    "puppeteer": "^5.4.1"
   }
 }

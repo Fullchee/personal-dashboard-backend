@@ -1,6 +1,10 @@
+const puppeteer = require('puppeteer');
 
-import { Person } from './person';
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('https://example.com');
+  await page.screenshot({path: 'example.png'});
 
-let person = new Person('Bob', 34);
-
-console.log(person.getGreeting());
+  await browser.close();
+})();
