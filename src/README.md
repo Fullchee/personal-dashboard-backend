@@ -1,10 +1,13 @@
 # How to extract data from Insight Timer with Puppeteer
 
-Puppeteer is awesome!
+## .env
 
-```js
-const browser = await puppeteer.launch();
-const page = await browser.newPage();
-  await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: './my-downloads'});
-```
+**Insight Timer**
+* INSIGHT_TIMER_EMAIL
+* INSIGHT_TIMER_PASSWORD
 
+**Toronto Water**
+* WATER_ACCOUNT_NUMBER
+* WATER_LAST_NAME
+* WATER_POSTAL_CODE
+* WATER_LAST_PAYMENT_METHOD

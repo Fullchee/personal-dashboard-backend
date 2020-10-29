@@ -1,4 +1,4 @@
-require("dotenv").config;
+require("dotenv").config();
 const puppeteer = require('puppeteer');
 
 (async () => {
@@ -10,8 +10,8 @@ const puppeteer = require('puppeteer');
     page.goto('https://insighttimer.com/login'),
     page.waitForSelector('input[name="email"].MuiInputBase-input'),
   ]);
-  await page.type('input[name="email"].MuiInputBase-input', "process.env.INSIGHT_TIMER_EMAIL");
-  await page.type('input[name="password"].MuiInputBase-input', INSIGHT_TIMER_PASSWORD);
+  await page.type('input[name="email"].MuiInputBase-input', process.env.INSIGHT_TIMER_EMAIL);
+  await page.type('input[name="password"].MuiInputBase-input', process.env.INSIGHT_TIMER_PASSWORD);
   await Promise.all([
     page.click('.MuiButtonBase-root[type="submit"]'),
     page.waitForXPath('//*[@id="root"]/div/div[2]/section/h1'),
