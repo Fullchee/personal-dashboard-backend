@@ -1,17 +1,30 @@
 require("dotenv").config();
-const puppeteer = require('puppeteer');
+const puppeteer = require("puppeteer");
 
 (async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    headless: false,
+  });
   const page = await browser.newPage();
-  await page._client.send('Page.setDownloadBehavior', { behavior: 'allow', downloadPath: './my-downloads' });
   
+  // eslint-disable-next-line no-underscore-dangle
+  await page._client.send("Page.setDownloadBehavior", {
+    behavior: "allow",
+    downloadPath: "./downloads",
+  });
+
   await Promise.all([
-    page.goto('https://insighttimer.com/login'),
+    page.goto("https://insighttimer.com/login"),
     page.waitForSelector('input[name="email"].MuiInputBase-input'),
   ]);
-  await page.type('input[name="email"].MuiInputBase-input', process.env.INSIGHT_TIMER_EMAIL);
-  await page.type('input[name="password"].MuiInputBase-input', process.env.INSIGHT_TIMER_PASSWORD);
+  await page.type(
+    'input[name="email"].MuiInputBase-input',
+    process.env.INSIGHT_TIMER_EMAIL
+  );
+  await page.type(
+    'input[name="password"].MuiInputBase-input',
+    process.env.INSIGHT_TIMER_PASSWORD
+  );
   await Promise.all([
     page.click('.MuiButtonBase-root[type="submit"]'),
     page.waitForXPath('//*[@id="root"]/div/div[2]/section/h1'),
